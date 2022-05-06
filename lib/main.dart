@@ -1,3 +1,4 @@
+import 'package:fixture_pro/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: AuthScreen(),
     );
   }
 }

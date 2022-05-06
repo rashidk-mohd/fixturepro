@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "553525369670",
+    "project_id": "fixturepro-c18da",
+    "storage_bucket": "fixturepro-c18da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553525369670:android:7f8aefd23be553d2c72347",
+        "android_client_info": {
+          "package_name": "com.example.fixture_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553525369670-vee230p54gi5q3gntmm7liv8huvsj727.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7Yre0Hk2xEYwTmPwIaBRt63810YnOc44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553525369670-vee230p54gi5q3gntmm7liv8huvsj727.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
