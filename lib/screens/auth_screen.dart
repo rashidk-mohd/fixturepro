@@ -1,6 +1,3 @@
-
-
-import 'package:fixture_pro/home.dart';
 import 'package:fixture_pro/model/http_exception.dart';
 import 'package:fixture_pro/provider/auth.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +38,6 @@ class AuthScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                 
                   Flexible(
                     // flex: deviceSize.width > 600 ? 2 : 1,
                     child: AuthCard(),
@@ -57,8 +53,6 @@ class AuthScreen extends StatelessWidget {
 }
 
 class AuthCard extends StatefulWidget {
-  
-
   @override
   _AuthCardState createState() => _AuthCardState();
 }
@@ -72,19 +66,23 @@ class _AuthCardState extends State<AuthCard> {
   };
   var _isLoading = false;
   final _passwordController = TextEditingController();
-  void showErrordialog(String message){
-    showDialog(context: context, builder: (ctx)=>AlertDialog(
-      title: Text('An error occurred'),
-      content: Text(message),
-      actions: [
-        FlatButton(onPressed: (){
-        Navigator.of(context).pop();
-        }, child: Text('Okey'))
-      ],
-    ));
+  void showErrordialog(String message) {
+    showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+              title: Text('An error occurred'),
+              content: Text(message),
+              actions: [
+                FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Okey'))
+              ],
+            ));
   }
 
-  Future<void> _submit() async{
+  Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) {
       // Invalid!
       return;
@@ -93,31 +91,34 @@ class _AuthCardState extends State<AuthCard> {
     setState(() {
       _isLoading = true;
     });
-    try{
+    try {
       if (_authMode == AuthMode.Login) {
-      // Log user in
-      await Provider.of<Auth>(context,listen: false).login(_authData['email']!, _authData['password']!);
-    } else {
-      // Sign user up
-     await Provider.of<Auth>(context,listen: false).signUp(_authData['email']!, _authData['password']!);
-    }
- Navigator.of(context).pushReplacementNamed('/home');
-    }on HttpException catch(error){
-       var errorMessage='Authentication failed';
-     if(error.toString().contains('EMAIL_EXIST')){
-       var errorMessage='Email Already in Use';
-     }else if(error.toString().contains('INVALID_EMAIL')){
-       var errorMessage='Invalid Email';
-     }else if(error.toString().contains('EMAIL_NOT_FOUND')){
-       var errorMessage='EMAIL is NOT FOUND';
-       }else if(error.toString().contains('INVALID_PASSWORD')){
-       var errorMessage='Invalid password';}
-showErrordialog(errorMessage);
-    }catch(erro){
-      const errorMessage='could not Authenticate you. please try later';
+        // Log user in
+        await Provider.of<Auth>(context, listen: false)
+            .login(_authData['email']!, _authData['password']!);
+      } else {
+        // Sign user up
+        await Provider.of<Auth>(context, listen: false)
+            .signUp(_authData['email']!, _authData['password']!);
+      }
+      Navigator.of(context).pushReplacementNamed('/home');
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_EXIST')) {
+        var errorMessage = 'Email Already in Use';
+      } else if (error.toString().contains('INVALID_EMAIL')) {
+        var errorMessage = 'Invalid Email';
+      } else if (error.toString().contains('EMAIL_NOT_FOUND')) {
+        var errorMessage = 'EMAIL is NOT FOUND';
+      } else if (error.toString().contains('INVALID_PASSWORD')) {
+        var errorMessage = 'Invalid password';
+      }
+      showErrordialog(errorMessage);
+    } catch (erro) {
+      const errorMessage = 'could not Authenticate you. please try later';
       showErrordialog(errorMessage);
     }
-    
+
     setState(() {
       _isLoading = false;
     });
@@ -162,7 +163,6 @@ showErrordialog(errorMessage);
                       return 'Invalid email!';
                     }
                     return null;
-               
                   },
                   onSaved: (value) {
                     _authData['email'] = value!;
@@ -181,7 +181,6 @@ showErrordialog(errorMessage);
                     _authData['password'] = value!;
                   },
                 ),
-                
                 if (_authMode == AuthMode.Signup)
                   TextFormField(
                     enabled: _authMode == AuthMode.Signup,
